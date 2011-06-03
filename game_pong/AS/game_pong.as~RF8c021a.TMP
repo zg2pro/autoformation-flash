@@ -1,0 +1,40 @@
+﻿package  {
+	import flash.display.*;
+	import flash.events.MouseEvent;
+	import flash.ui.Mouse;
+	
+	public class game_pong extends MovieClip {
+
+		var leftPaddle:Sprite = new Sprite();
+		var rightPaddle:Sprite = new Sprite();
+		var ball:Sprite = new Sprite();
+
+		public function game_pong() {
+			// constructor code
+			leftPaddle.addChild(new Bitmap(new Paddle()));
+			rightPaddle.addChild(new Bitmap(new Paddle()));
+			ball.addChild(new Bitmap(new Ball()));
+			addChild(leftPaddle);
+			addChild(rightPaddle);
+			addChild(ball);
+			leftPaddle.x = 0;
+			leftPaddle.y = 130;
+			rightPaddle.x = 280;
+			rightPaddle.y = 130;
+			ball.x = 130;
+			ball.y = 130;
+			leftPaddle.addEventListener(MouseEvent.MOUSE_OVER, usePaddle);
+		}
+		
+		function usePaddle(event:MouseEvent) {
+			leftPaddle.y = mouseY - 20;
+			leftPaddle.addEventListener(MouseEvent.MOUSE_MOVE, movePaddle);
+			//leftPaddle.addEventListener(MouseEvent.MOUSE_OUT, movePaddle);
+		}
+		function movePaddle(event:MouseEvent){
+			leftPaddle.y = mouseY - 20;
+		}
+
+	}
+	
+}
