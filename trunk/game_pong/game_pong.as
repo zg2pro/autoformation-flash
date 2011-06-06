@@ -6,28 +6,25 @@
 	
 	
 	public class game_pong extends MovieClip {
-		var oGame:PongObj = new PongObj();
+		var oGame:PongObj;
 		
 		public function game_pong() {
-			// constructor code
 			bStart.addEventListener(MouseEvent.CLICK,startGame);
 			stop();
-			
 		}
 		
-		
-
 		function startGame(event:MouseEvent) {
 			gotoAndStop("playgame");
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, processKey);
 			stage.focus = stage;
+			oGame = new PongObj();
 			stage.addChild(oGame);
-			
+			//while (PongObj.winner == null);
+			//gotoAndStop("gameover");	
 		}
 		
 		function processKey(event:KeyboardEvent) {
-			//trace("Key down");
-			oGame.useRightPaddle(event);
+			if (oGame != null) oGame.useRightPaddle(event);
 		}
 		
 	}

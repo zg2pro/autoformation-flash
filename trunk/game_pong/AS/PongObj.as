@@ -13,6 +13,7 @@
 		var ballGraph:Sprite = new Sprite();
 		var ball:BallObj;
 		var myTimer:Timer = new Timer(40);
+		static var winner:String;
 
 		public function PongObj() {
 			// constructor code
@@ -57,6 +58,17 @@
 			ball.moveBall();
 			ballGraph.x = ball.position.x;
 			ballGraph.y = ball.position.y;
+			if (ball.position.x > 320) {
+				winner = "Left player"; 
+				gotoAndStop("gameover");
+				myTimer.stop();	
+				stop();
+			} else if (ball.position.x < -20){
+				winner = "Right player";
+				gotoAndStop("gameover");	
+				myTimer.stop();
+				stop();
+			} // if 
 		}
 		
 		function checkCollisions(){
