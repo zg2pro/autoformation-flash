@@ -1,0 +1,1 @@
+The car does not move, only the map picture moves. The frame is always 550x400 and the map symbol is moved around the car.
