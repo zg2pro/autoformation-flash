@@ -12,8 +12,8 @@
 		var rightPaddle:Sprite = new Sprite();
 		var ballGraph:Sprite = new Sprite();
 		var ball:BallObj;
-		var myTimer:Timer = new Timer(40);
-		static var winner:String;
+		
+		var winner:String;
 
 		public function PongObj() {
 			// constructor code
@@ -32,8 +32,6 @@
 			ballGraph.y = ball.position.y;
 			leftPaddle.addEventListener(MouseEvent.MOUSE_OVER, useLeftPaddle);
 			//stage.focus.addEventListener(KeyboardEvent.KEY_DOWN, useRightPaddle);
-			myTimer.addEventListener(TimerEvent.TIMER, timerFunction);
-			myTimer.start();
 		}
 		
 		function useLeftPaddle(event:MouseEvent) {
@@ -53,22 +51,21 @@
 			}//if
 		}//useRightPaddle
 		
-		function timerFunction(event:TimerEvent){
+		function timerFunction(event:TimerEvent): int{
 			checkCollisions();
 			ball.moveBall();
 			ballGraph.x = ball.position.x;
 			ballGraph.y = ball.position.y;
 			if (ball.position.x > 320) {
 				winner = "Left player"; 
-				gotoAndStop("gameover");
-				myTimer.stop();	
 				stop();
+				return 1 ;
 			} else if (ball.position.x < -20){
-				winner = "Right player";
-				gotoAndStop("gameover");	
-				myTimer.stop();
 				stop();
+				winner = "Right player";
+				return 1 ;
 			} // if 
+			return 0;
 		}
 		
 		function checkCollisions(){
