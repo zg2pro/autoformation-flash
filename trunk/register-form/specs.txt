@@ -1,0 +1,1 @@
+Register Form include : first name, last name, address, email, password and list city(Ho Chi Minh, Ha Noi, Da Nang ...). When user click button Submit, you sure that this fields is not empty and then show message OK if data input is valid.
