@@ -104,6 +104,15 @@
 			gameStartTime = getTimer();
 			gameTime = 0;
 			addEventListener(Event.ENTER_FRAME,showTime);
+			
+			/*
+			//FOR TEST PURPOSE
+			MovieClip(root).player1Score = 20;
+			MovieClip(root).player2Score = 30;
+			gameTime = 12;
+			MovieClip(root).gotoAndStop("gameover");
+			*/
+			
 		}
 		
 		// player clicked on a card
@@ -127,8 +136,8 @@
 				// compare two cards
 				if (firstCard.cardface == secondCard.cardface) {
 					// remove a match
-					removeChild(firstCard);
-					removeChild(secondCard);
+					//removeChild(firstCard);
+					//removeChild(secondCard);
 					// reset selection
 					firstCard = null;
 					secondCard = null;
