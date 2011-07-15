@@ -1,0 +1,35 @@
+
+	var xmlURLReq:URLRequest = new URLRequest("xmlWriter.pl");
+	xmlURLReq.data = dataXML;
+	xmlURLReq.contentType = "text/xml";
+	xmlURLReq.method = URLRequestMethod.POST;
+	
+	var xmlSendLoad:URLLoader = new URLLoader();
+	xmlSendLoad.addEventListener(Event.COMPLETE, onComplete, false, 0, true);
+	xmlSendLoad.addEventListener(IOErrorEvent.IO_ERROR, onIOError, false, 0, true);
+	xmlSendLoad.load(xmlURLReq);
+}//function
+
+function onComplete(evt:Event):void {
+    trace("xml sent to perl script");
+}
+
+function onIOError(evt:IOErrorEvent):void {
+    trace("error");
+}
+
+
+
+
+
+
+	
+	var variables:URLVariables = new URLVariables();
+	variables.one = dataXML;
+	var request:URLRequest = new URLRequest();
+	request.url = "xmlWriter.pl";
+	request.data = variables;
+	var loader:URLLoader = new URLLoader();
+	loader.load(request);
+	loader.addEventListener(Event.COMPLETE, onComplete);
+	
